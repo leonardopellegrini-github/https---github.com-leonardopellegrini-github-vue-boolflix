@@ -1,8 +1,9 @@
 <template>
   <div id="main">
-    <div class="container p-3">
-      <LocandinaVue />
-    </div>
+
+      <div class="container contente">
+      <LocandinaVue v-for="(film, index) in elencofilm" :key="`film${index}`" :film="film"/>
+      </div>
     
   </div>
   
@@ -20,19 +21,21 @@ export default {
   
   data(){
     return{
-      apiUrl: 'https://api.themoviedb.org/3/movie/550?api_key=f16b4e0d1ad76ea4f01b26e4ad97562b&language=it-',
+      apiUrl: 'https://api.themoviedb.org/3/search/movie?api_key=f16b4e0d1ad76ea4f01b26e4ad97562b&language=it-IT&query=rush',   
+      elencofilm: [],
     }
   },
   
   methods:{
     getApi(){
       axios.get(this.apiUrl)
-      .then(r =>{
-        console.log(r.data)
-        this.elencofilm = r.data.response;
+      .then(risultato =>{
+        console.log(risultato.data)
+        this.elencofilm = risultato.data.results;
+        console.log(this.elencofilm)
       })
-      .catch(e =>{
-        console.log(e)
+      .catch(errore =>{
+        console.log(errore)
       })
     },
   },
@@ -45,10 +48,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 #main{
-  height: 85vh;
+  min-height: 85vh;
   background: #141414;
   color: white;
+}
+
+.contenente{
+  display: block;
+  overflow: auto;
 }
 
 </style>
