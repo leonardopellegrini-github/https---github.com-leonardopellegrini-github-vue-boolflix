@@ -4,7 +4,7 @@
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img v-if="cardData.poster_path.length != '' " :src="`https://image.tmdb.org/t/p/w342${cardData.poster_path}`" alt="{cardData.title}">
+              <img class="copertina" v-if="cardData.poster_path.length != '' " :src="`https://image.tmdb.org/t/p/w342${cardData.poster_path}`" alt="{cardData.title}">
               <img v-else src="../assets/img/logo.png" alt="Logo">
             </div>
             <div class="flip-card-back">
@@ -12,7 +12,8 @@
               <h3>{{cardData.original_title || cardData.original_name}}</h3> 
               <star-rating :rating="cardData.vote_average" :read-only="true" :star-size="30" :increment="0.01"></star-rating>
               
-               <country-flag :country='cardData.original_language' size='medium'/>
+               <country-flag v-if="cardData.original_language !== 'en'"  :country='cardData.original_language' size='medium'/>
+               <img class="inglese" v-else src="../assets/img/england-flag.png" alt="">
             </div>
           </div>
         </div>
@@ -45,7 +46,7 @@ export default {
     background-color: red;
     margin: 5px;
     float: left;
-    img{
+    .copertina{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -102,6 +103,12 @@ export default {
 
 svg{
   width: 10px;
+}
+
+.inglese{
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
 }
   
 </style>
