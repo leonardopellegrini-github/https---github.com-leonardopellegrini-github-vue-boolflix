@@ -8,8 +8,8 @@
               <img v-else src="../assets/img/logo.png" alt="Logo">
             </div>
             <div class="flip-card-back">
-              <h1>{{cardData.title}}</h1> 
-              <h3>{{cardData.original_title}}</h3> 
+              <h1>{{cardData.title || cardData.name}}</h1> 
+              <h3>{{cardData.original_title || cardData.original_name}}</h3> 
               <star-rating :rating="cardData.vote_average" :read-only="true" :star-size="30" :increment="0.01"></star-rating>
               
                <country-flag :country='cardData.original_language' size='medium'/>

@@ -2,7 +2,8 @@
   <div>
 
     <HeaderVue @startSearch="startSearch" />
-    <MainVue elencoFilm="items" :items="movie"/>
+    <MainVue titleCard="Film" elencoFilm="items" :items="movie"/>
+    <MainVue titleCard="Serie TV" elencoFilm="items" :items="tv"/>
 
   </div>
 </template>
@@ -23,7 +24,8 @@ export default {
 
    data(){
     return{
-      apiUrl: 'https://api.themoviedb.org/3/search/movie', 
+      apiUrlMovie: 'https://api.themoviedb.org/3/search/movie', 
+      apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
       apiParams:{
         api_key: 'f16b4e0d1ad76ea4f01b26e4ad97562b',
         language: 'it-IT',
@@ -36,12 +38,13 @@ export default {
   },
 
   mounted(){
-    this.getApi();
+    this.getApiMovie();
+    this.getApiTv();
   },
 
   methods:{
-      getApi(){
-      axios.get(this.apiUrl, {
+      getApiMovie(){
+      axios.get(this.apiUrlMovie, {
         params: this.apiParams
       })
       .then(risultato =>{
@@ -54,9 +57,24 @@ export default {
       })
     },
 
+    getApiTv(){
+      axios.get(this.apiUrlTv, {
+        params: this.apiParams
+      })
+      .then(risultato =>{
+        console.log(risultato.data)
+        this.tv = risultato.data.results;
+        console.log(this.tv)
+      })
+      .catch(errore =>{
+        console.log(errore)
+      })
+    },
+
      startSearch(cercaFilm){
       this.apiParams.query=cercaFilm;
-      this.getApi(); 
+      this.getApiMovie(); 
+      this.getApiTv(); 
     },
     
   },
