@@ -1,10 +1,14 @@
 <template>
   <div id="head" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between align-item-center">
+
       <img src="@/assets/img/logo.png" alt="Logo">
+
       <div>
-        <i class="fas fa-search"></i>
-        <input v-model="ricerca" type="text" placeholder="Cerca qui">
+
+
+        <input v-model.trim="cercaFilm" @keyup.enter="$emit('startSearch', cercaFilm)"  value=""  type="text" placeholder="Cerca qui">
+
       </div>
       
     </div>
@@ -16,7 +20,7 @@ export default {
   name: 'HeaderVue',
   data(){
     return {
-      ricerca: '',
+      cercaFilm: '',
     }
   }
 }
