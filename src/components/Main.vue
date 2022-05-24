@@ -2,8 +2,13 @@
 
   <div id="main">
       
-      <div class="w90">
-      <LocandinaVue v-for="card in items" :key="card.id" :cardData="card"/>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col align-self-center">
+            <LocandinaVue v-for="card in items" :key="card.id" :cardData="card"/>
+          </div>
+          
+        </div>
       </div>
     
   </div>
@@ -34,12 +39,14 @@ export default {
   background: #141414;
   color: white;
   margin: auto;
+  display: block;
 }
 .contenente{
   width: 90%;
   display: block;
-  overflow: auto;
+  margin: auto;
   text-align: center;
-  height: 85vh
+  height: 85vh;
 }
+
 </style>

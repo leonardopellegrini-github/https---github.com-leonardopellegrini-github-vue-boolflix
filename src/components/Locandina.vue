@@ -11,8 +11,9 @@
             </div>
             <div class="flip-card-back">
               <h1>{{cardData.title}}</h1> 
-              <p>{{cardData.original_title}}</p> 
-              <p>{{cardData.original_language}}</p>
+              <h3>{{cardData.original_title}}</h3> 
+              <star-rating :rating="3.8" :read-only="true" :increment="0.01"></star-rating>
+               <country-flag :country='cardData.original_language' size='big'/>
             </div>
           </div>
         </div>
@@ -20,11 +21,18 @@
 </template>
 
 <script>
+import CountryFlag from 'vue-country-flag'
+
+
 export default {
   name: 'LocandinaVue',
+  components: {
+    CountryFlag
+  },
   props:{
     cardData: Object,
-  }
+  },
+
 }
 </script>
 
@@ -43,6 +51,9 @@ export default {
     }
     h1{
       font-size: 18px;
+    }
+    h3{
+      font-size: 15px;
     }
   }
 
@@ -81,7 +92,7 @@ export default {
 }
 
 .flip-card-back {
-  background-color: red;
+  background-color: black;
   color: white;
   transform: rotateY(180deg);
 }

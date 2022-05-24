@@ -7,7 +7,7 @@
       <div>
 
 
-        <input v-model.trim="cercaFilm" @keyup.enter="$emit('startSearch', cercaFilm)"  value=""  type="text" placeholder="Cerca qui">
+        <input v-model="cercaFilm" @keyup.enter="$emit('startSearch', cercaFilm)"  value=""  type="text" placeholder="Cerca qui">
 
       </div>
       
