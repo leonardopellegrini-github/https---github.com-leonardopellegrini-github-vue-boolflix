@@ -35,6 +35,10 @@ export default {
     }
   },
 
+  mounted(){
+    this.getApi();
+  },
+
   methods:{
       getApi(){
       axios.get(this.apiUrl, {
@@ -52,8 +56,7 @@ export default {
 
      startSearch(cercaFilm){
       this.apiParams.query=cercaFilm;
-      console.log(this.apiParams);
-      this.getApi()
+      this.getApi(); 
     },
     
   },

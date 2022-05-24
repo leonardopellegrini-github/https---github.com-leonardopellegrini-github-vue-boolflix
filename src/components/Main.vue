@@ -5,6 +5,14 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col align-self-center">
+            <h1>FILM</h1>
+            <LocandinaVue v-for="card in items" :key="card.id" :cardData="card"/>
+          </div>
+          
+        </div>
+        <div class="row align-items-center">
+          <div class="col align-self-center">
+            <h1>Serie TV</h1>
             <LocandinaVue v-for="card in items" :key="card.id" :cardData="card"/>
           </div>
           
